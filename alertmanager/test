@@ -24,6 +24,6 @@ receivers:
     from: 'gohila.mariappan@tarento.com'
     smarthost: 'smtpout.idc.tarento.com:25'
     auth_username: 'gohila.mariappan@tarento.com'
-    auth_password: 'gohilamari'
+    auth_password: 'password'
     auth_secret: 'gohila.mariappan@tarento.com'
     auth_identity: 'gohila.mariappan@tarento.com'
