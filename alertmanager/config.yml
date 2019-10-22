@@ -1,0 +1,36 @@
+#route:
+ #   receiver: 'slack'
+
+#receivers:
+ #   - name: 'slack'
+  #    slack_configs:
+   #       - send_resolved: true
+#            username: '<username>'
+ #           channel: '#<channel-name>'
+  #          api_url: '<incomming-webhook-url>'
+
+
+global:
+  resolve_timeout: 15s
+
+route:
+  receiver: 'slack-notifications'
+  group_wait: 10s
+  group_interval: 1m
+  repeat_interval: 4h
+  group_by: ["alertname", "instance"]
+  routes:
+    - receiver: 'email'
+      group_by: ['alertname', 'cluster', 'instance']
+
+receivers:
+  - name: 'email'
+    email_configs:
+    - to: 'gohilamariappan@gmail.com'
+      send_resolved: true
+      require_tls: true
+      from: gohilamariappan@gmail.com
+      smarthost: smtp.gmail.com:587
+      auth_username: gohilamariappan@gmail.com
+      auth_password: gohilamari
+
