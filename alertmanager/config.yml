@@ -1,0 +1,31 @@
+global:
+  smtp_require_tls: false
+templates:
+- '/etc/alertmanager/*.tmpl'
+# The root route on which each incoming alert enters.
+route:
+
+  # default route if none match
+ # group_wait: 1m
+  #group_interval: 1s
+  #repeat_interval: 30m
+  receiver: example 
+
+  # The labels by which incoming alerts are grouped together. For example,
+  # multiple alerts coming in for cluster=A and alertname=LatencyHigh would
+  # be batched into a single group.
+  # TODO:
+  group_by: ['alertname', 'priority']
+
+  # All the above attributes are inherited by all child routes and can
+  # overwritten on each.
+receivers:
+- name: example
+  email_configs:
+  - to: 'gohila.mariappan@tarento.com'
+    from: 'prometheus@tarento.com'
+    smarthost: 'smtpout.idc.tarento.com:25'
+    auth_username: ''
+    auth_password: ''
+    auth_secret: ''
+    auth_identity: ''
