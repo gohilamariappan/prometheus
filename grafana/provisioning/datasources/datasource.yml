@@ -18,7 +18,7 @@ datasources:
   # <int> org id. will default to orgId 1 if not specified
   orgId: 1
   # <string> url
-  url: http://prometheus:9090
+  url: http://prom_prometheus:9090
   # <string> database password, if used
   password:
   # <string> database user, if used
@@ -30,7 +30,7 @@ datasources:
   # <string> basic auth username
   basicAuthUser: admin
   # <string> basic auth password
-  basicAuthPassword: foobar
+  basicAuthPassword: welcome
   # <bool> enable/disable with credentials headers
   withCredentials:
   # <bool> mark as default datasource. Max one per org

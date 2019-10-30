@@ -1,16 +1,16 @@
 global:
-  resolve_timeout: 5m
-  smtp_require_tls: false
-  
+#  smtp_require_tls: false
 templates:
 - '/etc/alertmanager/*.tmpl'
 # The root route on which each incoming alert enters.
 route:
 
-  receiver: example
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 4h
+  # default route if none match
+ # group_wait: 1m
+  #group_interval: 1s
+  #repeat_interval: 30m
+  receiver: example 
+
   # The labels by which incoming alerts are grouped together. For example,
   # multiple alerts coming in for cluster=A and alertname=LatencyHigh would
   # be batched into a single group.
@@ -22,11 +22,9 @@ route:
 receivers:
 - name: example
   email_configs:
-  - to: 'gohila.mariappan@tarento.com'
-    from: 'prometheus@tarento.com'
-    smarthost: 'smtpout.idc.tarento.com:25'
-    auth_username: ''
-    auth_password: ''
-    auth_secret: ''
-    auth_identity: ''
-
+  - to: 'gohilamariappan@gmail.com'
+    from: 'gohilamariappan@gmail.com'
+    smarthost: 'smtp.gmail.com:587'
+    auth_username: 'gohilamariappan@gmail.com'
+    auth_identity: 'gohilamariappan@gmail.com'
+    auth_password: '' 
