@@ -13,8 +13,6 @@ services:
         - 'prom_data:/prometheus'
         - './prometheus.yml:/etc/prometheus/prometheus.yml:ro'
         - './alert.rules:/etc/prometheus/alert.rules'
-    depends_on:
-        - cadvisor
     networks:
         - samplenet
   cadvisor:
@@ -27,6 +25,8 @@ services:
         - '/sys:/sys:ro'
         - '/var/lib/docker/:/var/lib/docker:ro'
         - '/dev/disk/:/dev/disk:ro' 
+    deploy:
+      mode: global
     networks:
         - samplenet
   alertmanager:
@@ -55,6 +55,8 @@ services:
         - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
     ports:
         - '9100:9100'
+    deploy:
+      mode: global
     networks:
         - samplenet
     restart: always
